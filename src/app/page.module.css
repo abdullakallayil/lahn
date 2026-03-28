@@ -1,0 +1,477 @@
+.pageContainer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 90px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.navButtons, .authButtons, .centerActions {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+.centerActions {
+  flex: 1;
+  justify-content: center;
+  max-width: 600px;
+}
+
+.circleBtn, .profileBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: none;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.circleBtn:hover {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.upgradeBtn {
+  background: var(--foreground);
+  color: var(--background);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 32px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.upgradeBtn:hover {
+  transform: scale(1.04);
+}
+
+.iconBtn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.iconBtn:hover {
+  color: white;
+}
+
+.profileBtn {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.section {
+  margin-bottom: 40px;
+}
+
+.greeting {
+  font-size: 32px;
+  font-weight: 700;
+  margin-bottom: 24px;
+  letter-spacing: -1px;
+}
+
+.recentGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+}
+
+.recentCard {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  position: relative;
+}
+
+.recentCard:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.recentImg {
+  width: 80px;
+  height: 80px;
+  background: var(--surface-hover);
+  background-image: linear-gradient(135deg, rgba(29,185,84,0.5), transparent);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+.recentTitle {
+  font-weight: 600;
+  padding: 0 16px;
+  flex: 1;
+}
+
+.cardPlayBtn {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  background: #ee1d23;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.recentCard:hover .cardPlayBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.cardPlayBtn:hover {
+  transform: scale(1.05) !important;
+  background: #ff4d54;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.sectionHeader h2 {
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.seeAll {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+  cursor: pointer;
+}
+
+.seeAll:hover {
+  color: var(--foreground);
+  text-decoration: underline;
+}
+
+.carousel {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  padding-bottom: 24px;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.mixCard {
+  min-width: 180px;
+  max-width: 180px;
+  background: #181818;
+  padding: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.mixCard:hover {
+  background: #282828;
+}
+
+.mixImg {
+  width: 100%;
+  aspect-ratio: 1;
+  background: var(--surface-hover);
+  border-radius: 4px;
+  margin-bottom: 16px;
+  position: relative;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+  background-image: linear-gradient(135deg, rgba(138,35,135,0.4), rgba(242,113,33,0.4));
+}
+
+.mixPlayBtn {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #ee1d23;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+}
+
+.mixCard:hover .mixPlayBtn {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mixPlayBtn:hover {
+  transform: scale(1.05) !important;
+  background: #ff4d54;
+}
+
+.mixTitle {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mixDesc {
+  font-size: 14px;
+  color: var(--text-muted);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.searchForm {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 16px;
+}
+
+.searchBar {
+  background: #242424;
+  border-radius: 24px;
+  padding: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid transparent;
+  transition: background 0.2s, border 0.2s;
+  width: 100%;
+}
+
+.searchDivider {
+  width: 1px;
+  height: 20px;
+  background: rgba(255,255,255,0.1);
+  margin: 0 4px;
+}
+
+.searchBar:focus-within {
+  background: var(--surface);
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.searchInput {
+  background: transparent;
+  border: none;
+  color: var(--foreground);
+  font-size: 14px;
+  width: 100%;
+  outline: none;
+}
+
+.searchInput::placeholder {
+  color: var(--text-muted);
+}
+
+.recentText {
+  display: flex;
+  flex-direction: column;
+  padding: 0 16px;
+  flex: 1;
+  overflow: hidden;
+}
+
+.recentTitle {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.recentArtist {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activeCard {
+  background: rgba(255, 255, 255, 0.15) !important;
+  border-left: 4px solid var(--accent);
+}
+
+.likedHeader {
+  display: flex;
+  align-items: flex-end;
+  gap: 24px;
+  padding: 24px 0;
+  margin-bottom: 24px;
+  background: linear-gradient(to bottom, rgba(80, 56, 160, 0.5), transparent);
+  margin-left: -32px;
+  margin-right: -32px;
+  padding-left: 32px;
+}
+
+.likedImgBig {
+  width: 232px;
+  height: 232px;
+  background: linear-gradient(135deg, #450af5, #c4efd9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 60px rgba(0,0,0,0.5);
+}
+
+.likedInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.likedTitleLarge {
+  font-size: 80px;
+  font-weight: 900;
+  margin: 0;
+  letter-spacing: -2px;
+  color: var(--foreground);
+}
+
+.likedMeta {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.username {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.tracksHeader {
+  display: grid;
+  grid-template-columns: 48px 1fr 1fr 1fr 80px;
+  padding: 8px 16px;
+  color: var(--text-muted);
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--divider);
+  margin-bottom: 16px;
+}
+
+.trackList {
+  display: flex;
+  flex-direction: column;
+}
+
+.trackRow {
+  display: grid;
+  grid-template-columns: 48px 1fr 1fr 1fr 80px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.trackRow:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.activeTrack {
+  background: rgba(238, 29, 35, 0.1) !important;
+}
+
+.trackIndex {
+  color: var(--text-muted);
+  font-size: 16px;
+}
+
+.activeTrack .trackIndex {
+  color: #ee1d23;
+}
+
+.trackMain {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.trackThumb {
+  width: 40px;
+  height: 40px;
+  border-radius: 4px;
+}
+
+.trackDetails {
+  display: flex;
+  flex-direction: column;
+}
+
+.trackTitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: var(--foreground);
+}
+
+.activeTrack .trackTitle {
+  color: #1ed760;
+}
+
+.trackArtist {
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+.trackAlbum, .trackDate, .trackTime {
+  color: var(--text-muted);
+  font-size: 14px;
+}

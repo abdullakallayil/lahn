@@ -1,0 +1,251 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  background: #181818;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  padding: 40px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: transparent;
+  border: none;
+  color: #b3b3b3;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.closeBtn:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.header {
+  margin-bottom: 30px;
+}
+
+.header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  background: linear-gradient(135deg, #fff, #b3b3b3);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header p {
+  color: #b3b3b3;
+  font-size: 14px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.mainContent {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.imageSection {
+  flex-shrink: 0;
+}
+
+.imageUpload {
+  width: 180px;
+  height: 180px;
+  background: #282828;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 2px dashed rgba(255, 255, 255, 0.1);
+  transition: all 0.3s;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+  color: #b3b3b3;
+  font-size: 13px;
+  gap: 12px;
+}
+
+.imageUpload:hover {
+  border-color: #ee1d23;
+  background-color: #333;
+  color: white;
+}
+
+.inputsSection {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.inputGroup label {
+  font-size: 12px;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.inputGroup input {
+  background: #3e3e3e;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  padding: 12px;
+  color: white;
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.inputGroup input:focus {
+  outline: none;
+  background: #4a4a4a;
+  border-color: #535353;
+}
+
+.fileSection {
+  width: 100%;
+}
+
+.audioUpload {
+  background: #282828;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  cursor: pointer;
+  transition: all 0.2s;
+  color: #b3b3b3;
+}
+
+.audioUpload:hover {
+  background: #333;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+
+.audioUpload.hasFile {
+  border-color: #ee1d23;
+  color: #ee1d23;
+}
+
+.audioUpload span {
+  flex-grow: 1;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.uploadIcon {
+  color: #b3b3b3;
+}
+
+.submitBtn {
+  background: #ee1d23;
+  color: white;
+  border: none;
+  border-radius: 500px;
+  padding: 16px;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.3, 0, 0, 1);
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.submitBtn:hover {
+  transform: scale(1.02);
+  background: #ff2d34;
+}
+
+.submitBtn:active {
+  transform: scale(0.98);
+}
+
+.submitBtn:disabled {
+  background: #b3b3b3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@media (max-width: 600px) {
+  .modal {
+    padding: 24px;
+  }
+  .mainContent {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .imageUpload {
+    width: 150px;
+    height: 150px;
+  }
+  .inputsSection {
+    width: 100%;
+  }
+}

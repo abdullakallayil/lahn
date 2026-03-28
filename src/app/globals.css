@@ -1,0 +1,92 @@
+:root {
+  --background: #000000;
+  --foreground: #ffffff;
+  --surface: #0a0a0a;
+  --surface-hover: #1a1a1a;
+  --accent: #ee1d23; /* Performance Red */
+  --accent-gradient: linear-gradient(to right, #910a0e, #ee1d23, #ff4d4d);
+  --text-muted: #888888;
+  --divider: rgba(255, 255, 255, 0.08);
+  --player-theme: #1a1a1a;
+  
+  --sidebar-width: 250px;
+  --player-height: 90px;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-inter), Arial, Helvetica, sans-serif;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Glassmorphism utilities */
+.glass {
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-top: 1px solid var(--divider);
+}
+
+/* Custom Scrollbar for dark theme */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.5);
+}
+
+/* Main Layout Grid */
+.app-container {
+  display: grid;
+  grid-template-areas: 
+    "sidebar main"
+    "player player";
+  grid-template-columns: var(--sidebar-width) 1fr;
+  grid-template-rows: 1fr var(--player-height);
+  height: 100vh;
+}
+
+.sidebar-area {
+  grid-area: sidebar;
+  background-color: var(--background);
+  /* The sidebar can be pure black or very dark #000 */
+}
+
+.main-area {
+  grid-area: main;
+  background-color: var(--surface);
+  /* subtle top gradient for a premium feel */
+  background: linear-gradient(to bottom, #4d0a0a 0%, var(--surface) 350px);
+  overflow-y: auto;
+  border-radius: 8px 8px 0 0;
+  margin-top: 8px;
+  margin-right: 8px;
+  position: relative;
+}
+
+.player-area {
+  grid-area: player;
+  z-index: 50; /* ensure it stays above scrolling content */
+}

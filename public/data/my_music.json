@@ -1,0 +1,20 @@
+[
+  {
+    "id": "12e074e5-c221-4dbb-9555-4bee44ee56d8",
+    "title": "Zill",
+    "artist": "SPY - D",
+    "thumbnail": "/uploads/4664f091-bf93-4029-b1eb-d9be3b4a4dc5.jpg",
+    "url": "/uploads/e4f479d5-db6b-455a-8444-d1ace0be5274.webm",
+    "type": "local",
+    "createdAt": "2026-03-28T06:19:06.146Z"
+  },
+  {
+    "id": "29b6918b-ce2a-4010-be58-55e7a33633ad",
+    "title": "Zill SPYD",
+    "artist": "SPY-D",
+    "thumbnail": "/uploads/29f786ab-9bb2-4f12-a7c9-d8ddb7bd8661.jpg",
+    "url": "/uploads/2aba764e-ab14-4067-889e-b046358a518b.webm",
+    "type": "local",
+    "createdAt": "2026-03-27T19:37:04.072Z"
+  }
+]
