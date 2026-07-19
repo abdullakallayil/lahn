@@ -32,15 +32,13 @@ export function PlayerProvider({ children }) {
     setThemeColor(randomColor);
   };
 
-  const fetchUserSongs = async () => {
+  const fetchUserSongs = () => {
     try {
-      const res = await fetch('/api/my-music');
-      if (res.ok) {
-        const data = await res.json();
-        setUserSongs(data);
-      }
+      const stored = JSON.parse(localStorage.getItem('lahn_user_songs') || '[]');
+      setUserSongs(stored);
     } catch (err) {
-      console.error("Failed to fetch user songs:", err);
+      console.error("Failed to load user songs from storage:", err);
+      setUserSongs([]);
     }
   };
 

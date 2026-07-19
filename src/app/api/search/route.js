@@ -1,4 +1,4 @@
-import ytSearch from 'yt-search';
+import YTSearch from 'youtube-search-without-api-key';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -9,13 +9,13 @@ export async function GET(request) {
   }
 
   try {
-    const results = await ytSearch(query);
-    const videos = results.videos.slice(0, 20).map(v => ({
-      id: v.videoId,
+    const results = await YTSearch.Search(query);
+    const videos = results.slice(0, 20).map(v => ({
+      id: v.id.videoId,
       title: v.title,
-      artist: v.author.name,
-      thumbnail: v.thumbnail,
-      duration: v.timestamp,
+      artist: v.snippet?.channelTitle || 'Unknown',
+      thumbnail: v.thumbnail?.thumbnails?.slice(-1)[0]?.url || `https://i.ytimg.com/vi/${v.id?.videoId}/hqdefault.jpg`,
+      duration: '',
       type: 'youtube'
     }));
     
@@ -25,6 +25,6 @@ export async function GET(request) {
     });
   } catch (error) {
     console.error("Search Error:", error);
-    return new Response(JSON.stringify({ error: 'Failed to search YouTube' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'Failed to search YouTube', details: error.message }), { status: 500 });
   }
 }

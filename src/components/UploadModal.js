@@ -39,6 +39,13 @@ export default function UploadModal() {
     }
   };
 
+  const readFileAsDataURL = (file) => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onloadend = () => resolve(reader.result);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!formData.audio || !formData.title) {
@@ -47,30 +54,36 @@ export default function UploadModal() {
     }
 
     setLoading(true);
-    const data = new FormData();
-    data.append('title', formData.title);
-    data.append('artist', formData.artist);
-    data.append('audio', formData.audio);
-    if (formData.image) {
-      data.append('image', formData.image);
-    }
-
     try {
-      const res = await fetch('/api/upload', {
-        method: 'POST',
-        body: data,
-      });
-
-      if (res.ok) {
-        await fetchUserSongs();
-        setShowUploadModal(false);
-      } else {
-        const err = await res.json();
-        alert(err.error || 'Upload failed');
+      // Read audio as base64 data URL (works on Vercel - no server filesystem needed)
+      const audioDataUrl = await readFileAsDataURL(formData.audio);
+      
+      // Read image as base64 data URL if provided
+      let thumbnailDataUrl = null;
+      if (formData.image) {
+        thumbnailDataUrl = await readFileAsDataURL(formData.image);
       }
+
+      const newTrack = {
+        id: crypto.randomUUID(),
+        title: formData.title,
+        artist: formData.artist || 'Unknown Artist',
+        thumbnail: thumbnailDataUrl || null,
+        url: audioDataUrl,
+        type: 'local',
+        createdAt: new Date().toISOString()
+      };
+
+      // Save to localStorage
+      const existing = JSON.parse(localStorage.getItem('lahn_user_songs') || '[]');
+      existing.unshift(newTrack);
+      localStorage.setItem('lahn_user_songs', JSON.stringify(existing));
+
+      await fetchUserSongs();
+      setShowUploadModal(false);
     } catch (error) {
       console.error('Upload error:', error);
-      alert('An error occurred during upload.');
+      alert('An error occurred during upload: ' + error.message);
     } finally {
       setLoading(false);
     }

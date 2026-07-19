@@ -1,15 +1,14 @@
-import ytSearch from 'yt-search';
+import YTSearch from 'youtube-search-without-api-key';
 
 export async function GET() {
   try {
-    // Searching for 'trending songs 2026' or 'top hits' to simulate a trending list
-    const results = await ytSearch('trending songs 2026');
-    const videos = results.videos.slice(0, 15).map(v => ({
-      id: v.videoId,
+    const results = await YTSearch.Search('trending music 2026 top hits');
+    const videos = results.slice(0, 15).map(v => ({
+      id: v.id.videoId,
       title: v.title,
-      artist: v.author.name,
-      thumbnail: v.thumbnail,
-      duration: v.timestamp,
+      artist: v.snippet?.channelTitle || 'Unknown',
+      thumbnail: v.thumbnail?.thumbnails?.slice(-1)[0]?.url || `https://i.ytimg.com/vi/${v.id?.videoId}/hqdefault.jpg`,
+      duration: '',
       type: 'youtube'
     }));
     
@@ -19,6 +18,6 @@ export async function GET() {
     });
   } catch (error) {
     console.error("Trending Fetch Error:", error);
-    return new Response(JSON.stringify({ error: 'Failed to fetch trending music' }), { status: 500 });
+    return new Response(JSON.stringify({ error: 'Failed to fetch trending music', details: error.message }), { status: 500 });
   }
 }
